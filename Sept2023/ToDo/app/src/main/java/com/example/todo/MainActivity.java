@@ -14,21 +14,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView tasksRecyclerView;
-    private ToDoAdapter tasksAdapter;
-    private List<ToDoModel> taskList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide(); // hide topmost navigation bar
+        // getSupportActionBar().hide(); // hide topmost navigation bar
 
-        taskList = new ArrayList<>();
+        List<ToDoModel> taskList = new ArrayList<>();
 
-        tasksRecyclerView = findViewById(R.id.taskRecyclerView);
+        RecyclerView tasksRecyclerView = findViewById(R.id.taskRecyclerView);
         tasksRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        tasksAdapter = new ToDoAdapter(this);
+        ToDoAdapter tasksAdapter = new ToDoAdapter(this);
         tasksRecyclerView.setAdapter(tasksAdapter);
 
         ToDoModel task = new ToDoModel();
