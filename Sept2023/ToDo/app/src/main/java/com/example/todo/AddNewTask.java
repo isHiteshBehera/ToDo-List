@@ -1,5 +1,6 @@
 package com.example.todo;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -95,9 +96,18 @@ public class AddNewTask extends BottomSheetDialogFragment {
                     task.setTask(text);
                     task.setStatus(0);
                 }
+                dismiss();
             }
         });
 
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        Activity activity = getActivity();
+        if(activity instanceof DialogCloseListener) {
+            ((DialogCloseListener)activity).handleDialogClose(dialog);
+        }
     }
 
 }
