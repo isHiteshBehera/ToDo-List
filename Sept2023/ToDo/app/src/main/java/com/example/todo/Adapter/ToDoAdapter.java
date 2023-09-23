@@ -36,7 +36,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         ToDoModel item = todoList.get(position);
         holder.task.setText(item.getTask());
-        holder.task.setChecked(item.getStatus());
+        holder.task.setChecked(toBoolean(item.getStatus()));
     }
 
     public int getItemCount() {
@@ -44,7 +44,12 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     }
 
     private boolean toBoolean(int n) {
-        return n != 0;
+        return n!=0;
+    }
+
+    public void setTasks(List<ToDoModel> todoList) {
+        this.todoList = todoList;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
